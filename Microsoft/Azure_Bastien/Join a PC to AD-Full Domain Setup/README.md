@@ -18,17 +18,17 @@ object appears correctly within the domain structure.
 Set the client's preferred DNS server to the domain controller's IP address, 
 which is required for the client to locate the domain.
 
-### 2. Joined the PC to the domain
-![Join Domain](images/02-join-domain.png)
+### 2. Joined the PC to the domain (fix errors-ncpa.cpl)
+![Join Domain](images/domain-name-1.png,domain-ncpa.cpl.png,domain-IPv4.properties-3.png)
 Changed the computer's domain membership from Workgroup to the domain 
 (e.g. lab.local) via System Properties.
 
 ### 3. Authenticated with domain credentials
-![Domain Credentials](images/03-domain-credentials.png)
+![Domain Credentials](images/computer.login-1.png)
 Entered domain administrator credentials to authorize the join request.
 
 ### 4. Verified successful domain join
-![Join Success](images/04-join-success.png)
+![Join Success](images/computer.login-2.png)
 Confirmed the "Welcome to the domain" message and restarted the client machine.
 
 ### 5. Verified the computer object in Active Directory
