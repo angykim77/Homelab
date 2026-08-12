@@ -20,7 +20,7 @@ which is required for the client to locate the domain.
 
 ### 2. Joined the PC to the domain (fix errors-ncpa.cpl)
 <img src="images/domain-name-1.png" width="30%" />
-<img src="images/domain-ncpa.cpl.png" width="30%" />
+<img src="images/domain-ncpa.cpl-2.png" width="30%" />
 <img src="images/domain-IPv4.properties-3.png" width="30%" />
 Changed the computer's domain membership from Workgroup to the domain 
 (e.g. lab.local) via System Properties.
