@@ -34,7 +34,7 @@ Entered domain administrator credentials to authorize the join request.
 Confirmed the "Welcome to the domain" message and restarted the client machine.
 
 ### 5. Verified the computer object in Active Directory
-![Computer in ADUC](images/05-computer-in-aduc.png)
+![Computer in ADUC](images/ADUC-computer-object.png)
 Confirmed the new computer object appeared under the Computers OU in 
 Active Directory Users and Computers.
 
