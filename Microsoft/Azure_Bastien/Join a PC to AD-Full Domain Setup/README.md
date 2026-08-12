@@ -38,6 +38,22 @@ Confirmed the "Welcome to the domain" message and restarted the client machine.
 Confirmed the new computer object appeared under the Computers OU in 
 Active Directory Users and Computers.
 
+### 6. PowerShell on lab-PC: created accounts (work from home)
+<img src="images/edit-localusers-and-groups.png" width="20%" />
+Administrators in Group Local
+<img src="images/net-user-administrators.png" width="20%" />
+See the net user
+<img src="images/creaged-tempangy.png" width="20%" />
+Created new account
+<img src="images/newaccount-administrators.png" width="20%" />
+<img src="images/.png" width="20%" />
+<img src="images/.png" width="20%" />
+<img src="images/.png" width="20%" />
+<img src="images/.png" width="20%" />
+<img src="images/.png" width="20%" />
+<img src="images/.png" width="20%" />
+
+
 ### 6. Logged in with a domain account
 ![Domain Login](images/06-domain-login.png)
 Logged into the client machine using a domain user account to confirm 
