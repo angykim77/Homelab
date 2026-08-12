@@ -19,7 +19,9 @@ Set the client's preferred DNS server to the domain controller's IP address,
 which is required for the client to locate the domain.
 
 ### 2. Joined the PC to the domain (fix errors-ncpa.cpl)
-![Join Domain](images/domain-name-1.png,domain-ncpa.cpl.png,domain-IPv4.properties-3.png)
+![Join Domain 1](images/domain-name-1.png)
+![Join Domain 2](domain-ncpa.cpl.png)
+![Join Domain 3](domain-IPv4.properties-3.png)
 Changed the computer's domain membership from Workgroup to the domain 
 (e.g. lab.local) via System Properties.
 
