@@ -46,7 +46,9 @@ See the net user
 <img src="images/creaged-tempangy.png" width="20%" />
 Created new account
 <img src="images/newaccount-administrators.png" width="20%" />
-<img src="images/.png" width="20%" />
+Proved the new account in localgroup
+<img src="images/delete-account.png" width="20%" />
+Delete the tempangy account
 <img src="images/.png" width="20%" />
 <img src="images/.png" width="20%" />
 <img src="images/.png" width="20%" />
