@@ -50,11 +50,14 @@ Proved the new account in localgroup
 <img src="images/delete-account.png" width="20%" />
 Delete the tempangy account
 
-### 7. Recycling Bin: Deleted Objects (Computers)
-<img src="images/.png" width="20%" />
-<img src="images/.png" width="20%" />
-<img src="images/.png" width="20%" />
-<img src="images/.png" width="20%" />
+### 7. Recycle Bin: Deleted Objects (Computers)
+<img src="images/globalsearch-add-criteria.png" width="20%" />
+ADD criteria: Objects with a given last known parent.
+<img src="images/globalsearch-OUsetting.png" width="20%" />
+Type on <Empty> field: OU=Computers,OU=Branch1,DC=lab,DC=local
+<img src="images/globalsearch-LAB-PC.png" width="20%" />
+Retrieved LAB-PC
+
 <img src="images/.png" width="20%" />
 
 
