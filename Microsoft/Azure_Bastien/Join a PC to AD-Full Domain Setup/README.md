@@ -56,7 +56,7 @@ ADD criteria: Objects with a given last known parent.
 <img src="images/globalsearch-OUsetting.png" width="20%" />
 Type on <Empty> field: OU=Computers,OU=Branch1,DC=lab,DC=local
 <img src="images/globalsearch-LAB-PC.png" width="20%" />
-Retrieved LAB-PC
+Revived the LAB-PC
 
 
 ### 8. Logged in with a domain account
