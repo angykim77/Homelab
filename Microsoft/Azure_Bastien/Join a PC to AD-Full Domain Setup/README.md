@@ -58,11 +58,10 @@ Type on <Empty> field: OU=Computers,OU=Branch1,DC=lab,DC=local
 <img src="images/globalsearch-LAB-PC.png" width="20%" />
 Retrieved LAB-PC
 
-<img src="images/.png" width="20%" />
 
-
-### 6. Logged in with a domain account
-![Domain Login](images/06-domain-login.png)
+### 8. Logged in with a domain account
+<img src="images/domain-login-name.png" width="20%" />
+<img src="images/domain-login-powershell.png" width="20%" />
 Logged into the client machine using a domain user account to confirm 
 authentication against the domain controller.
 
