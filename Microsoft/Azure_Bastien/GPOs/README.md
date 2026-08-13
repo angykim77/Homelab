@@ -31,19 +31,21 @@ Group Policy Objects container.
 ### 3. Created a new GPO
 <img src="images/created-GPO.png" width="20%" />
 <img src="images/created-GPO-TESTGPO.png" width="20%" />
+Created new GPO(TESTGPO) in Group Policy Objects
 <img src="images/add-Anna-oneuser.png" width="20%" />
+Added one user: Anna Y
 <img src="images/remove-authenticatedusers.png" width="20%" />
-Remove authenticated users - just security filtering for Anna. (Gatekeeper-1)
+Remove authenticated users - just security filtering for Anna.
 <img src="images/security-advancedsetting-Anna.png" width="20%" />
-Allow read, apply group policy for GPO. (Gatekeeper-2)
+Advanced setting: allow read, apply group policy for GPO. (Gatekeeper-1)
 <img src="images/idchecker-delegation.png" width="20%" />
+Security Filtering (Gatekeeper-2)
 <img src="images/setting.png" width="20%" />
 
 Created a new Group Policy Object in the Group Policy Objects container.
-Linked the new GPO to an OU containing test users/computers.
 
 ### 4. Tested the GPO on the client machine
-![Domain Credentials](images/.png)
+![Domain Credentials](images/tested-GPO.png)
 <img src="images/.png" width="20%" />
 Ran gpupdate /force on the client to apply the policy.
 Confirmed the setting took effect on the client machine.
