@@ -25,13 +25,20 @@ an Active Directory domain, and how policies flow through the AD structure
 
 ### 2. Opened the Group Policy Management Console (GPMC)
 ![Domain Credentials](images/GPMC.png)
-<img src="images/.png" width="20%" />
 Explored the console layout, including the domain, OU structure, and the 
 Group Policy Objects container.
 
 ### 3. Created a new GPO
-![Domain Credentials](images/.png)
-<img src="images/.png" width="20%" />
+<img src="images/created-GPO.png" width="20%" />
+<img src="images/created-GPO-TESTGPO.png" width="20%" />
+<img src="images/add-Anna-oneuser.png" width="20%" />
+<img src="images/remove-authenticatedusers.png" width="20%" />
+Remove authenticated users - just security filtering for Anna. (Gatekeeper-1)
+<img src="images/security-advancedsetting-Anna.png" width="20%" />
+Allow read, apply group policy for GPO. (Gatekeeper-2)
+<img src="images/idchecker-delegation.png" width="20%" />
+<img src="images/setting.png" width="20%" />
+
 Created a new Group Policy Object in the Group Policy Objects container.
 Linked the new GPO to an OU containing test users/computers.
 
