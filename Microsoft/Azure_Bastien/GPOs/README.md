@@ -46,12 +46,19 @@ Created a new Group Policy Object in the Group Policy Objects container.
 
 ### 4. Tested the GPO on the client machine
 ![Domain Credentials](images/tested-GPO.png)
-<img src="images/.png" width="20%" />
 Ran gpupdate /force on the client to apply the policy.
 Confirmed the setting took effect on the client machine.
 
 ### 5. Disabled Windows Firewall via GPO
 ![Domain Credentials](images/.png)
+<img src="images/newGPO-disable-domain-firewall.png" width="20%" />
+Created new GPO: Disable Domain Firewall
+<img src="images/windows-defender-firewall.png" width="20%" />
+<img src="images/firewallstate-off.png" width="20%" />
+Group Policy Management Editor: Firewall state Off
+<img src="images/add-computer-GPM-error.png" width="20%" />
+<img src="images/.png" width="20%" />
+<img src="images/.png" width="20%" />
 <img src="images/.png" width="20%" />
 Configured Computer Configuration > Policies > Windows Settings > Security 
 Settings > Windows Defender Firewall to turn off the firewall.
