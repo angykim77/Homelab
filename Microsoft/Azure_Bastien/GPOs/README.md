@@ -18,6 +18,7 @@ and troubleshooting.
 
 ### 1. What Is Group Policy?
 ![Domain Credentials](images/search-GPMC.png)
+
 Reviewed how Group Policy applies settings to users and computers within 
 an Active Directory domain, and how policies flow through the AD structure 
 (Local, Site, Domain, OU).
