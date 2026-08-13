@@ -17,14 +17,14 @@ and troubleshooting.
 ## Build Process
 
 ### 1. What Is Group Policy?
-![Domain Credentials](images/.png)
+![Domain Credentials](images/search-GPMC.png)
 <img src="images/.png" width="20%" />
 Reviewed how Group Policy applies settings to users and computers within 
 an Active Directory domain, and how policies flow through the AD structure 
 (Local, Site, Domain, OU).
 
 ### 2. Opened the Group Policy Management Console (GPMC)
-![Domain Credentials](images/.png)
+![Domain Credentials](images/GPMC.png)
 <img src="images/.png" width="20%" />
 Explored the console layout, including the domain, OU structure, and the 
 Group Policy Objects container.
