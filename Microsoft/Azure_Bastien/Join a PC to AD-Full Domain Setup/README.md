@@ -43,7 +43,7 @@ Active Directory Users and Computers.
 Administrators in Group Local
 <img src="images/net-user-administrators.png" width="20%" />
 See the net user
-<img src="images/creaged-tempangy.png" width="20%" />
+<img src="images/created-tempangy.png" width="20%" />
 Created new account
 <img src="images/newaccount-administrators.png" width="20%" />
 Proved the new account in localgroup
