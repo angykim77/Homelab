@@ -49,6 +49,8 @@ Created new account
 Proved the new account in localgroup
 <img src="images/delete-account.png" width="20%" />
 Delete the tempangy account
+
+### 7. Recycling Bin: Deleted Objects (Computers)
 <img src="images/.png" width="20%" />
 <img src="images/.png" width="20%" />
 <img src="images/.png" width="20%" />
