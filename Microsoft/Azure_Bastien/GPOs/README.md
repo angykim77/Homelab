@@ -55,11 +55,17 @@ Confirmed the setting took effect on the client machine.
 Created new GPO: Disable Domain Firewall
 
 <img src="images/windows-defender-firewall.png" width="20%" />
+Windows setting
 <img src="images/firewallstate-off.png" width="20%" />
 Group Policy Management Editor: Firewall state Off
+
 <img src="images/add-computer-DDF.png" width="20%" />
-<img src="images/.png" width="20%" />
-<img src="images/.png" width="20%" />
+<img src="images/Link-branch1-disablefirewall.png" width="20%" />
+<img src="images/linked-branch1.png" width="20%" />
+Added computer in security filtering-linked Branch1
+Now, GPO is live for LAB_PC
+<img src="images/tested-gpresult-computer.png" width="20%" />
+tested gpresult
 <img src="images/.png" width="20%" />
 Configured Computer Configuration > Policies > Windows Settings > Security 
 Settings > Windows Defender Firewall to turn off the firewall.
