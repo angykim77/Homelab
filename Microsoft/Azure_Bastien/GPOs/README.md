@@ -97,8 +97,7 @@ Appeared error: setting networking inbound port rules-Allow RDP
 <img src="images/local-users-and-groups.png" width="20%"/>
 lusrmgr.msc: local users and groups-Remote Desktop Users-add anna.Y(user)
 me able to log in to this VM using anna.Y domain credentials.
-<img src="images/.png" width="20%"/>
-<img src="images/.png" width="20%"/>
+
 
 
 Configured User Configuration > Policies > Administrative Templates > 
