@@ -85,9 +85,21 @@ Enabled: Prohibit access to Control Panel and PC settings
 <img src="images/proved-setting-hidecontrolpanel.png" width="20%"/>
 Filtering: test Anna user-link it at domain(lab.local)-live for Anna Y.
 
+<img src="images/newRDP-login-lab-client.png" width="20%"/>
+<img src="images/lab-client-login.png" width="20%"/>
+WIN+R-mstsc-Login lab.local\anna.Y
+<img src="images/RDP-network-setting.png" width="20%"/>
+<img src="images/network-inbound-port-rules-allow-RDP.png" width="20%"/>
+<img src="images/ADUC-account-password-setting.png" width="20%"/>
+<img src="images/anna-reset-password.png" width="20%"/>
+<img src="images/Login-successes .png" width="20%"/>
+Appeared error: setting networking inbound port rules-Allow RDP
+<img src="images/local-users-and-groups.png" width="20%"/>
+lusrmgr.msc: local users and groups-Remote Desktop Users-add anna.Y(user)
+me able to log in to this VM using anna.Y domain credentials.
 <img src="images/.png" width="20%"/>
 <img src="images/.png" width="20%"/>
-<img src="images/.png" width="20%"/>
+
 
 Configured User Configuration > Policies > Administrative Templates > 
 Desktop > Desktop to push a wallpaper to client machines.
