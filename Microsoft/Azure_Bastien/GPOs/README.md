@@ -65,7 +65,7 @@ Group Policy Management Editor: Firewall state Off
 Added computer in security filtering-linked Branch1
 Now, GPO is live for LAB_PC
 <img src="images/tested-gpresult-computer.png" width="20%" />
-tested gpresult
+Tested gpresult
 <img src="images/Noted.png" width="20%" />
 
 Configured Computer Configuration > Policies > Windows Settings > Security 
@@ -74,7 +74,18 @@ Verified Windows Firewall was disabled on the client after gpupdate.
 
 ### 6. Set a custom desktop wallpaper via GPO
 ![Domain Credentials](images/.png)
-<img src="images/.png" width="20%" />
+<img src="images/add-users-created-hidecontrolpanel.png" width="20%"/>
+Added users and created Hide Control Panel
+<img src="images/controlpanel-prohibitaccess.png" width="20%"/>
+<img src="images/controlpanel-prohibitaccess-proved.png" width="20%"/>
+Enabled: Prohibit access to Control Panel and PC settings
+<img src="images/.png" width="20%"/>
+<img src="images/.png" width="20%"/>
+<img src="images/.png" width="20%"/>
+<img src="images/.png" width="20%"/>
+<img src="images/.png" width="20%"/>
+<img src="images/.png" width="20%"/>
+
 Configured User Configuration > Policies > Administrative Templates > 
 Desktop > Desktop to push a wallpaper to client machines.
 Confirmed the wallpaper was applied on the client after login.
