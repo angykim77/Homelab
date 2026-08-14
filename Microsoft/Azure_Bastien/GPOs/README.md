@@ -98,11 +98,12 @@ Appeared error: setting networking inbound port rules-Allow RDP
 lusrmgr.msc: local users and groups-Remote Desktop Users-add anna.Y(user)
 me able to log in to this VM using anna.Y domain credentials.
 
-
-
 Configured User Configuration > Policies > Administrative Templates > 
 Desktop > Desktop to push a wallpaper to client machines.
 Confirmed the wallpaper was applied on the client after login.
+
+<img src="images/Environment-spunup.png" width="20%" />
+Environment-spun up: example of practice with GPO
 
 ### 7. Mapped a network drive via GPO
 ![Domain Credentials](images/.png)
