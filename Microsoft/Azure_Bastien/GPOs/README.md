@@ -66,7 +66,7 @@ Added computer in security filtering-linked Branch1
 Now, GPO is live for LAB_PC
 <img src="images/tested-gpresult-computer.png" width="20%" />
 Tested gpresult
-<img src="images/Noted.png" width="20%" />
+<img src="images/noted.png" width="20%" />
 
 Configured Computer Configuration > Policies > Windows Settings > Security 
 Settings > Windows Defender Firewall to turn off the firewall.
