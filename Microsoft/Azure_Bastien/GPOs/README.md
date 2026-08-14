@@ -73,15 +73,18 @@ Settings > Windows Defender Firewall to turn off the firewall.
 Verified Windows Firewall was disabled on the client after gpupdate.
 
 ### 6. Set a custom desktop wallpaper via GPO
-![Domain Credentials](images/.png)
 <img src="images/add-users-created-hidecontrolpanel.png" width="20%"/>
 Added users and created Hide Control Panel
+
 <img src="images/controlpanel-prohibitaccess.png" width="20%"/>
 <img src="images/controlpanel-prohibitaccess-proved.png" width="20%"/>
 Enabled: Prohibit access to Control Panel and PC settings
-<img src="images/.png" width="20%"/>
-<img src="images/.png" width="20%"/>
-<img src="images/.png" width="20%"/>
+
+<img src="images/filter-add-anna.png" width="20%"/>
+<img src="images/link-branch1-anna-hidecontrolpanel.png" width="20%"/>
+<img src="images/proved-setting-hidecontrolpanel.png" width="20%"/>
+Filtering: test Anna user-link it at domain(lab.local)-live for Anna Y.
+
 <img src="images/.png" width="20%"/>
 <img src="images/.png" width="20%"/>
 <img src="images/.png" width="20%"/>
