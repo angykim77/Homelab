@@ -165,15 +165,27 @@ Verified Edge opened to the configured homepage on the client.
 
 *Strongest verification for this one: after 'gpupdate /force', open 'edge://policy' in the browser and confirm the homepage policy show as applied.*
 
-### 10. Configured Delegation
-![Domain Credentials](images/.png)
-<img src="images/.png" width="20%" />
-Granted a specific user/group permission to manage the GPO without giving 
-full Domain Admin rights.
+### 10. Security Filtering - ON/Off Comparison
+<img src="images/gpupdate-force.png" width="40%" />
+<img src="images/gpresult-HideControlPanel.png" width="40%" />
+<img src="images/HideControlPanel-remove-annaY.png" width="40%" />
+<img src="images/notapplied-HideControlPanel.png" width="40%" />
+<img src="images/HIdeControlPanel-add-annaY.png" width="40%" />
+<img src="images/gpupdate-force-again.png" width="40%" />
+<img src="images/applied-HIdeControlPanel.png" width="40%" />
+Rather than requiring a second test account, this demonstrates the filtering mechanism directly on the 'Hide Control Panel' GPO from section 6:
+1. With Anna Y in Security Filtering, run 'gpresult /r' as Anna Y → GPO appears under Applied GPOs.
+2. Remove Anna Y from Security Filtering.
+3. Run 'gpresult /r' again → GPO now appears under *Denied (security filtering)*
+
+This before/after pair is the clearest possible proof that Security Filtering - not just 
+the OU link - controls whoa GPO actually applies to.
+*Sill to capture: the two gpresult outputs side by side.*
+   
 
 ### 11. Troubleshot GPO application
 ![Domain Credentials](images/.png)
-<img src="images/.png" width="20%" />
+<img src="images/.png" width="40%" />
 Used gpupdate /force, gpresult /r, and gpresult /h to verify which 
 policies applied and diagnose why a policy wasn't taking effect.
 
