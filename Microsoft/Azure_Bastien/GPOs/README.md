@@ -14,7 +14,7 @@ and troubleshooting.
 - Group Policy Management Console (GPMC)
 - Active Directory Users and Computers (ADUC)
 
-## **Note:** All GPO testing in this lab was performed by RDP'ing directly into the Domain Controller as a restricted test user - no separate client VM was provisioned. This meant tools normally used on a member client (like 'lusrmgr.msc') aren't available on a DC, See section 12 for how that was worked around.
+**Note:** All GPO testing in this lab was performed by RDP'ing directly into the Domain Controller as a restricted test user - no separate client VM was provisioned. This meant tools normally used on a member client (like 'lusrmgr.msc') aren't available on a DC, See section 12 for how that was worked around.
 
 ## Build Process
 
@@ -58,7 +58,7 @@ Command Prompt: used 'gpupdate /force' and 'gpresult /r /scope:computer'
 Created new GPO: Disable Domain Firewall
 
 <img src="images/windows-defender-firewall.png" width="40%" />
-Configured: 'Computer Configuration > Policies > Windows Settings > Security Setting > 
+Configured: 'Computer Configuration > Policies > Windows Settings > Security Settings > 
 Windows Defender Firewall with Advanced Security'
 <img src="images/firewallstate-off.png" width="40%" />
 Domain Profile → Firewall state: off
@@ -72,10 +72,8 @@ Linked to the 'Branch1' OU.
 Verified with 'gpupdate /force' and 'gpresult', and confirmed the Domain Profile firewall was 
 disabled on the target computer.
 
-<img src="images/noted.png" width="40%" />
-remind me the progress.
 
-### 6. Restricted control panel Access - A User-Scoped GPO
+### 6. Restricted Control Panel Access - A User-Scoped GPO
 
 **Goal:** prove a GPO can be scoped to a single user via Security Filtering, and that the restriction actually takes effect on that user's session.
 
@@ -163,9 +161,11 @@ Confirmed the drive appeared in file explorer on the client after login.
 Set the default homepage for Microsoft Edge using 'Administrative Template > Microsoft Edge'.
 Verified Edge opened to the configured homepage on the client.
 
+Microsoft's Edge policy template (.cab) download wouldn't complete, so I used an ADMX-free alternative: a GPP Registry item setting HomepageLocation and HomepageIsNewTabPage under HKCU\SOFTWARE\Policies\Microsoft\Edge. Verified via edge://policy, which showed the homepage policy as Value: [https://annaY.com], Status: OK.
+
 *Strongest verification for this one: after 'gpupdate /force', open 'edge://policy' in the browser and confirm the homepage policy show as applied.*
 
-### 10. Security Filtering - ON/Off Comparison
+### 10. Security Filtering - ON/Off
 <img src="images/gpupdate-force.png" width="40%" />
 <img src="images/gpresult-HideControlPanel.png" width="40%" />
 <img src="images/HideControlPanel-remove-annaY.png" width="40%" />
@@ -180,7 +180,6 @@ Rather than requiring a second test account, this demonstrates the filtering mec
 
 This before/after pair is the clearest possible proof that Security Filtering - not just 
 the OU link - controls whoa GPO actually applies to.
-*Sill to capture: the two gpresult outputs side by side.*
    
 
 ### 11. Configured Delegation
@@ -191,15 +190,15 @@ delete, modify security'.
 <img src="images/TESTGPO-annaY-edit-setting-2.png" width="40%" />
 In a real environment this would typically go to an IT/helpdesk group rather than an end user - Anna Y is a member of an 'IT workers' group discovered during this lab, which would be a more realistic delegation target than delegation to a restricted end-user account.
 
-*Still to capture: the delegation tab showing the granted permissin, and a login as the delegated account showing it can edit only that GPO.
+
 
 ### 12. Troubleshooting - Getting RDP Access to Work for a Restricted Test User
-While testing the 'Hide Control Panel' GPO in section 6, RDP login as 'anna.Y' failed repeatedly. The root cause turned out to be four separate layers, each blocking for a different reason:
+While testing the 'Hide Control Panel' GPO in section 6, RDP login as 'anna.Y' failed repeatedly. The root cause turned out to be Five separate layers, each blocking for a different reason:
 
 **Layer 1 - Azure Network Security Group (network reachability).**
 
-<img src="images/RDP-network-setting.png" width="30%" />
-
+<img src="images/network-inbound-port-rules-allow-RDP.png" width="30%" /> 
+ 
 <img src="images/RDP-network-setting.png" width="30%" /> 
 
 
@@ -208,14 +207,10 @@ While testing the 'Hide Control Panel' GPO in section 6, RDP login as 'anna.Y' f
 
 **Layer 2 - Windows Defender Firewall (OS-level reachability).**
 
+<img src="images/.png" width="30%" />
 
-<img src="images/setting.png" width="30%" />
+<img src="images/Login-tested.png" width="30%" />
 
-<img src="images/windows-defender-firewall.png" width="30%" />
-
-<img src="images/firewallstate-off.png" width="30%" />
-
-<img src="images/tested-GPO.png" width="30%" />
 
 Even with the NSG open, the in-guest Windows Firewall also needed its inbound "Remote Desktop" rule enabled - a separate layer from the NSG; both have to allow the connection.
 
