@@ -208,6 +208,7 @@ While testing the 'Hide Control Panel' GPO in section 6, RDP login as 'anna.Y' f
 
 **Layer 2 - Windows Defender Firewall (OS-level reachability).**
 
+
 <img src="images/setting.png" width="30%" />
 
 <img src="images/windows-defender-firewall.png" width="30%" />
