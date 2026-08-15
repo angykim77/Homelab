@@ -221,6 +221,7 @@ Even with the NSG open, the in-guest Windows Firewall also needed its inbound "R
 **Layer 3 - User Rights Assignment (the real blocker).**
 
 Once the network path was open, login failed with: **"To sign in remotely, you need the right to sign in through Remote Desktop Services. By default, members of the Administrators group have this right."**
+
 <img src="images/Layer3-security-UserRightsAssignment.png" width="30%" />
 
 <img src="images/Layer3-security-UserRightsAssignment-gpupdate-force.png" width="30%" />
