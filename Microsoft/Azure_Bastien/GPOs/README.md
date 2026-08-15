@@ -86,23 +86,32 @@ Configured: 'Users configuration > Police > Administrative Templates > Control P
 <img src="images/filter-add-anna.png" width="40%"/>
 <img src="images/link-branch1-anna-hidecontrolpanel.png" width="40%"/>
 Linked the GPO at the domain root (lab.local)
-SEcurity Filtering: removed 'Authenticated Users', added 'Anna (anna.Y@lab.local)' only.
+Security Filtering: removed 'Authenticated Users', added 'Anna (anna.Y@lab.local)' only.
 <img src="images/proved-setting-hidecontrolpanel.png" width="40%"/>
 Filtering: test Anna user-link it at domain(lab.local)-live for Anna Y.
 
-##Trouble Shooting (1): Setting password
+#Setting password
 <img src="images/newRDP-login-lab-client.png" width="40%"/>
 <img src="images/lab-client-login.png" width="40%"/>
 <img src="images/RDP-network-setting.png" width="40%"/>
 <img src="images/network-inbound-port-rules-allow-RDP.png" width="40%"/>
 <img src="images/ADUC-account-password-setting.png" width="40%"/>
 <img src="images/anna-reset-password.png" width="40%"/>
+
+#Tested login
 <img src="images/Login-tested .png" width="40%"/>
 Tested: 'WIN+R-mstsc'-Login 'ab.local\anna.Y'
-Appeared error: setting networking inbound port rules-Allow RDP
-<img src="images/local-users-and-groups.png" width="40%"/>
-'lusrmgr.msc': local users and groups-Remote Desktop Users-add anna.Y(user)
-me able to log in to this VM using anna.Y domain credentials.
+<img src="images/new-connect-login.png" width="40%"/>
+Tested by RDP'ing into 'lab-vm' as 'lab\anna.Y' (Refer to section: 12-Trouble shooing)
+<img src="images/check-applied-GPO.png" width="40%"/>
+'gpresult /r /scope:user' inside the Anna Y session showed 'Hide Control Panel' under 
+*Applied Group Policy Objects*.
+<img src="images/control-panel-restricted.png" width="40%"/>
+Opening Control Panel ('WIN+R' → 'control') returned: "This operation has been cancelled due to
+restrictions in effect on this computer. Please contact your system administrator."
+
+
+
 
 
 <img src="images/Environment-spunup.png" width="20%" />
