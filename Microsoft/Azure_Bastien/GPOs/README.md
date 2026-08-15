@@ -198,15 +198,20 @@ While testing the 'Hide Control Panel' GPO in section 6, RDP login as 'anna.Y' f
 
 **Layer 1 - Azure Network Security Group (network reachability).**
 <img src="images/RDP-network-setting.png" width="40%" />
-<img src="images/RDP-network-setting.png" width="40%" />
+
+<img src="images/RDP-network-setting.png" width="40%" /> 
+
 <img src="images/.png" width="40%" />
 'lab-vm' is an Azure VM reachable over its public IP. The attached NSG ('lab-vm-nsg') had no inbound rule for RDP, so the connections never reached the VM at all.
 **Fix:** added an inbound security rule - 'Allow-RDP', TCP, port 3389, source restricted to a specific IP, action Allow.
 
 **Layer 2 - Windows Defender Firewall (OS-level reachability).**
 <img src="images/setting.png" width="40%" />
+
 <img src="images/windows-defender-firewall.png" width="40%" />
+
 <img src="images/firewallstate-off.png" width="40%" />
+
 <img src="images/tested-GPO.png" width="40%" />
 
 Even with the NSG open, the in-guest Windows Firewall also needed its inbound "Remote Desktop" rule enabled - a separate layer from the NSG; both have to allow the connection.
@@ -214,22 +219,29 @@ Even with the NSG open, the in-guest Windows Firewall also needed its inbound "R
 **Layer 3 - User Rights Assignment (the real blocker).**
 Once the network path was open, login failed with: **"To sign in remotely, you need the right to sign in through Remote Desktop Services. By default, members of the Administrators group have this right."**
 <img src="images/Layer3-security-UserRightsAssignment.png" width="40%" />
+
 <img src="images/Layer3-security-UserRightsAssignment-gpupdate-force.png" width="40%" />
+
 Root cause: unlike regular member server, a *Doman controller*
 does not grant this right to the 'Remote Desktop Users' group by default - only to 'Administrators'.
 **Fix:** 'Default Domain Controllers Policy' → 'Computer configuration > Policies > Windows Settings > Security Settings > Local Policies > User Rights Assignment' → **Allow log on through Remote Desktop Services** → added the 'Remote Desktop users' group, then 'gpupdate /force'.
 
 **Layer 4 - Group membership.**
 <img src="images/Layer4-lusrmgr.msc-failed.png" width="40%" />
+
 <img src="images/Layer4-Builtin-add-annaY.png" width="40%" />
+
 Tried adding 'anna.Y' to the local 'Remote Desktop Users' group via 'lusrmgr.msc', which failed with: *"the computer lab-vm is a domain controller. This  snap-in cannot be used on a domain controller. domain accounts are managed with the Active Directory Users and Computers snap-in.* 
 A Domain controller has no local SAM database, so 'lusrmgr.nsc' is disabled on it.
 **Fix:** Active Directory Users and Computers → 'lab.local' → **Builtin** container → **Remote Desktop Users** → Members → Add → 'Anna Y'
 
 **Layer 5 - Session state.**
 <img src="images/Layer5-anndY-signout.png" width="40%" />
+
 <img src="images/Layer5-annaY-signin.png" width="40%" />
+
 <img src="images/Layer5-anndY-gpresult.png" width="40%" />
+
 Even after Layers 1-4 were fixed, the GPO restriction is section 6 didn't visibly apply until a full sign-out-sign-in was performed instead of reconnecting to a saved session.
 
 **Verification of the full fix:**
