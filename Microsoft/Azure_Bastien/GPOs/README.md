@@ -205,7 +205,10 @@ While testing the 'Hide Control Panel' GPO in section 6, RDP login as 'anna.Y' f
 
 **Layer 2 - Windows Defender Firewall (OS-level reachability).**
 
-<img src="images/Login-tested.png" width="30%" />
+<img src="images/applied-HIdeControlPanel.png" width="30%" />
+<img src="images/HideControlPanel-remove-annaY.png" width="30%" />
+<img src="images/notapplied-HideControlPanel.png" width="30%" />
+
 
 
 Even with the NSG open, the in-guest Windows Firewall also needed its inbound "Remote Desktop" rule enabled - a separate layer from the NSG; both have to allow the connection.
