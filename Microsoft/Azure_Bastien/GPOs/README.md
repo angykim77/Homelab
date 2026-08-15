@@ -201,7 +201,7 @@ While testing the 'Hide Control Panel' GPO in section 6, RDP login as 'anna.Y' f
 
 <img src="images/RDP-network-setting.png" width="40%" /> 
 
-<img src="images/.png" width="40%" />
+
 'lab-vm' is an Azure VM reachable over its public IP. The attached NSG ('lab-vm-nsg') had no inbound rule for RDP, so the connections never reached the VM at all.
 **Fix:** added an inbound security rule - 'Allow-RDP', TCP, port 3389, source restricted to a specific IP, action Allow.
 
