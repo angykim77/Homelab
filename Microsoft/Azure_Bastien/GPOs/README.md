@@ -9,7 +9,7 @@ and troubleshooting.
 
 ## Technologies Used
 - Windows Server 2022 (Domain Controller)
-- Windows 10/11 (Client machine)
+- Windows 10/11 
 - Active Directory Domain Services (AD DS)
 - Group Policy Management Console (GPMC)
 - Active Directory Users and Computers (ADUC)
@@ -191,7 +191,7 @@ In a real environment this would typically go to an IT/helpdesk group rather tha
 
 
 ### 12. Troubleshooting - Getting RDP Access to Work for a Restricted Test User
-While testing the 'Hide Control Panel' GPO in section 6, RDP login as 'anna.Y' failed repeatedly. The root cause turned out to be Five separate layers, each blocking for a different reason:
+While testing the 'Hide Control Panel' GPO in section 6, RDP login as 'anna.Y' failed repeatedly. The root cause turned out to be four separate layers, each blocking for a different reason:
 
 **Layer 1 - Azure Network Security Group (network reachability).**
 
@@ -203,17 +203,8 @@ While testing the 'Hide Control Panel' GPO in section 6, RDP login as 'anna.Y' f
 'lab-vm' is an Azure VM reachable over its public IP. The attached NSG ('lab-vm-nsg') had no inbound rule for RDP, so the connections never reached the VM at all.
 **Fix:** added an inbound security rule - 'Allow-RDP', TCP, port 3389, source restricted to a specific IP, action Allow.
 
-**Layer 2 - Windows Defender Firewall (OS-level reachability).**
 
-<img src="images/applied-HIdeControlPanel.png" width="30%" />
-<img src="images/HideControlPanel-remove-annaY.png" width="30%" />
-<img src="images/notapplied-HideControlPanel.png" width="30%" />
-
-
-
-Even with the NSG open, the in-guest Windows Firewall also needed its inbound "Remote Desktop" rule enabled - a separate layer from the NSG; both have to allow the connection.
-
-**Layer 3 - User Rights Assignment (the real blocker).**
+**Layer 2 - User Rights Assignment (the real blocker).**
 
 Once the network path was open, login failed with: **"To sign in remotely, you need the right to sign in through Remote Desktop Services. By default, members of the Administrators group have this right."**
 
@@ -221,11 +212,11 @@ Once the network path was open, login failed with: **"To sign in remotely, you n
 
 <img src="images/Layer3-security-UserRightsAssignment-gpupdate-force.png" width="30%" />
 
-Root cause: unlike regular member server, a *Doman controller*
+Root cause: unlike regular member server, a *Domain controller*
 does not grant this right to the 'Remote Desktop Users' group by default - only to 'Administrators'.
 **Fix:** 'Default Domain Controllers Policy' → 'Computer configuration > Policies > Windows Settings > Security Settings > Local Policies > User Rights Assignment' → **Allow log on through Remote Desktop Services** → added the 'Remote Desktop users' group, then 'gpupdate /force'.
 
-**Layer 4 - Group membership.**
+**Layer 3 - Group membership.**
 
 <img src="images/Layer4-lusrmgr.msc-failed.png" width="30%" />
 
@@ -235,7 +226,7 @@ Tried adding 'anna.Y' to the local 'Remote Desktop Users' group via 'lusrmgr.msc
 A Domain controller has no local SAM database, so 'lusrmgr.msc' is disabled on it.
 **Fix:** Active Directory Users and Computers → 'lab.local' → **Builtin** container → **Remote Desktop Users** → Members → Add → 'Anna Y'
 
-**Layer 5 - Session state.**
+**Layer 4 - Session state.**
 
 <img src="images/Layer5-anndY-signout.png" width="30%" />
 
@@ -247,7 +238,7 @@ Even after Layers 1-4 were fixed, the GPO restriction is section 6 didn't visibl
 
 **Verification of the full fix:**
 - Successful RDP login as 'lab\anna.Y' via a fresh "Other user" logon(not a resumed/remembered session).
-- 'gpresult /r /scope:user' inside that session showed 'Remote Desktop Users' in Anna Y's grop list and 'Hide Control Panel' under Applied Group Policy Objects.
+- 'gpresult /r /scope:user' inside that session showed 'Remote Desktop Users' in Anna Y's group list and 'Hide Control Panel' under Applied Group Policy Objects.
 - Control Panel access attempt returned the restriction error, confirming both the login chain *and* the GPO were working end to end.
 
 
