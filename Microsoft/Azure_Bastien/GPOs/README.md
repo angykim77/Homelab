@@ -142,22 +142,28 @@ link → 'gpupdate /force' → verify pattern as section 6.
 
 
 ### 8. Mapped a Network Drive via GPO
-<img src="images/Map-NetworkDrive-1.png" width="20%" />
-<img src="images/Map-NetworkDrive-2.png" width="20%" />
-<img src="images/Linked-lab.local.png" width="20%" />
-<img src="images/security-filtering-anna.png" width="20%" />
-<img src="images/gpupdate.force.png" width="20%" />
-<img src="images/thisPC-A.png" width="20%" />
+<img src="images/Map-NetworkDrive-1.png" width="40%" />
+<img src="images/Map-NetworkDrive-2.png" width="40%" />
+<img src="images/Linked-lab.local.png" width="40%" />
+<img src="images/security-filtering-anna.png" width="40%" />
+<img src="images/gpupdate.force.png" width="40%" />
+<img src="images/thisPC-A.png" width="40%" />
+Used Group Policy Preferences (Drive Maps) to configure an automatic network drive mapping.
+Confirmed the drive appeared in file explorer on the client after login.
 
-Set the default homepage for Microsoft Edge using Administrative 
-Templates > Microsoft Edge.
+### 9. Configured Microsoft Edge Homepage via GPO
+<img src="images/Set-EdgeHomepage-1.png" width="40%" />
+<img src="images/registry.png" width="40%" />
+<img src="images/registry-2.png" width="40%" />
+<img src="images/registry-3.png" width="40%" />
+<img src="images/Linked-lab.local.png" width="40%" />
+<img src="images/security-filtering-annaY.png" width="40%" />
+<img src="images/gpupdate-force.png" width="40%" />
+<img src="images/browse.png" width="40%" />
+Set the default homepage for Microsoft Edge using 'Administrative Template > Microsoft Edge'.
 Verified Edge opened to the configured homepage on the client.
 
-### 9. Applied Security Filtering
-![Domain Credentials](images/.png)
-<img src="images/.png" width="20%" />
-Restricted which users, computers, or groups the GPO actually applies to, 
-beyond just the OU link, using the Security Filtering section of the GPO.
+*Strongest verification for this one: after 'gpupdate /force', open 'edge://policy' in the browser and confirm the homepage policy show as applied.*
 
 ### 10. Configured Delegation
 ![Domain Credentials](images/.png)
