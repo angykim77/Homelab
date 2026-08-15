@@ -94,7 +94,8 @@ Security Filtering: removed 'Authenticated Users', added 'Anna (anna.Y@lab.local
 <img src="images/proved-setting-hidecontrolpanel.png" width="40%"/>
 Filtering: test Anna user-link it at domain(lab.local)-live for Anna Y.
 
-#Setting password
+### Setting password
+
 <img src="images/newRDP-login-lab-client.png" width="30%"/>
 <img src="images/lab-client-login.png" width="30%"/>
 <img src="images/RDP-network-setting.png" width="30%"/>
@@ -102,7 +103,8 @@ Filtering: test Anna user-link it at domain(lab.local)-live for Anna Y.
 <img src="images/ADUC-account-password-setting.png" width="30%"/>
 <img src="images/anna-reset-password.png" width="30%"/>
 
-#Tested login
+### Tested login
+
 <img src="images/Login-tested .png" width="30%"/>
 Tested: 'WIN+R-mstsc'-Login 'ab.local\anna.Y'
 <img src="images/new-connect-login.png" width="30%"/>
