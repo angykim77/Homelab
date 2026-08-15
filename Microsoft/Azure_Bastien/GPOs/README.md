@@ -14,93 +14,96 @@ and troubleshooting.
 - Group Policy Management Console (GPMC)
 - Active Directory Users and Computers (ADUC)
 
+## **Note:** All GPO testing in this lab was performed by RDP'ing directly into the Domain Controller as a restricted test user - no separate client VM was provisioned. This meant tools normally used on a member client (like 'lusrmgr.msc') aren't available on a DC, See section 12 for how that was worked around.
+
 ## Build Process
 
 ### 1. What Is Group Policy?
-![Domain Credentials](images/search-GPMC.png)
-
+<img src="images/search-GPMC.png" width="50%" />
 Reviewed how Group Policy applies settings to users and computers within 
 an Active Directory domain, and how policies flow through the AD structure 
 (Local, Site, Domain, OU).
 
 ### 2. Opened the Group Policy Management Console (GPMC)
-![Domain Credentials](images/GPMC.png)
+<img src="images/GPMC.png" width="50%" />
 Explored the console layout, including the domain, OU structure, and the 
 Group Policy Objects container.
 
 ### 3. Created a new GPO
-<img src="images/created-GPO.png" width="20%" />
-<img src="images/created-GPO-TESTGPO.png" width="20%" />
-Created new GPO(TESTGPO) in Group Policy Objects
-<img src="images/add-Anna-oneuser.png" width="20%" />
-Added one user: Anna Y
-<img src="images/remove-authenticatedusers.png" width="20%" />
-Remove authenticated users - just security filtering for Anna.
-<img src="images/security-advancedsetting-Anna.png" width="20%" />
-Advanced setting: allow read, apply group policy for GPO. (Gatekeeper-1)
-<img src="images/idchecker-delegation.png" width="20%" />
-Security Filtering (Gatekeeper-2)
-<img src="images/setting.png" width="20%" />
+<img src="images/created-GPO.png" width="40%" />
+<img src="images/created-GPO-TESTGPO.png" width="40%" />
+Created new GPO(TESTGPO) in Group Policy Objects This GPO has no actual settings defined - it exists purely to practice the permission mechanics below, not to test an applied setting.
+<img src="images/add-Anna-oneuser.png" width="40%" />
+Added one user to Security Filtering: 'Anna Y'
+<img src="images/remove-authenticatedusers.png" width="40%" />
+Remove 'authenticated users' from Security filtering so the GPO scope narrows to Anna only.
+<img src="images/security-advancedsetting-Anna.png" width="40%" />
+<img src="images/idchecker-delegation.png" width="40%" />
+Advanced setting: allow 'read'+'apply group policy': Verified the same result appears in two place
+1) the 'Security Filtering' section on the scope tab
+2) the underlying 'Advanced Security Settings' (Delegation tab-Advanced)
+<img src="images/setting.png" width="40%" />
 
 
 
-### 4. Tested the GPO on the client machine
-![Domain Credentials](images/tested-GPO.png)
+### 4. Tested the GPO Application
+<img src="images/tested-GPO.png" width="50%" />
+Command Prompt: used 'gpupdate /force' and 'gpresult /r /scope:computer'
+-Basic verification workflow before testing a GPO with a real setting.
 
-Ran gpupdate /force on the client to apply the policy.
-Confirmed the setting took effect on the client machine.
-
-### 5. Disabled Windows Firewall via GPO
-<img src="images/newGPO-disable-domain-firewall.png" width="20%" />
+### 5. Disabled the Domain Firewall Profile via GPO
+<img src="images/newGPO-disable-domain-firewall.png" width="40%" />
 Created new GPO: Disable Domain Firewall
 
-<img src="images/windows-defender-firewall.png" width="20%" />
-Windows setting
-<img src="images/firewallstate-off.png" width="20%" />
-Group Policy Management Editor: Firewall state Off
+<img src="images/windows-defender-firewall.png" width="40%" />
+Configured: 'Computer Configuration > Policies > Windows Settings > Security Setting > 
+Windows Defender Firewall with Advanced Security'
+<img src="images/firewallstate-off.png" width="40%" />
+Domain Profile → Firewall state: off
+<img src="images/add-computer-DDF.png" width="40%" />
+<img src="images/Link-branch1-disablefirewall.png" width="40%" />
+Security Filtering scoped to the computer object 'LAB-PC'
+(a computer, not a user, since this is a Computer Configuration policy).
+<img src="images/linked-branch1.png" width="40%" />
+Linked to the 'Branch1' OU.
+<img src="images/tested-gpresult-computer.png" width="40%" />
+Verified with 'gpupdate /force' and 'gpresult', and confirmed the Domain Profile firewall was 
+disabled on the target computer.
 
-<img src="images/add-computer-DDF.png" width="20%" />
-<img src="images/Link-branch1-disablefirewall.png" width="20%" />
-<img src="images/linked-branch1.png" width="20%" />
-Added computer in security filtering-linked Branch1
-Now, GPO is live for LAB_PC
-<img src="images/tested-gpresult-computer.png" width="20%" />
-Tested gpresult
-<img src="images/noted.png" width="20%" />
+<img src="images/noted.png" width="40%" />
+remind me the progress.
 
-Configured Computer Configuration > Policies > Windows Settings > Security 
-Settings > Windows Defender Firewall to turn off the firewall.
-Verified Windows Firewall was disabled on the client after gpupdate.
+### 6. Restricted control panel Access - A User-Scoped GPO
 
-### 6. Set a custom desktop wallpaper via GPO
-<img src="images/add-users-created-hidecontrolpanel.png" width="20%"/>
-Added users and created Hide Control Panel
+**Goal:** prove a GPO can be scoped to a single user via Security Filtering, and that the restriction actually takes effect on that user's session.
 
-<img src="images/controlpanel-prohibitaccess.png" width="20%"/>
-<img src="images/controlpanel-prohibitaccess-proved.png" width="20%"/>
-Enabled: Prohibit access to Control Panel and PC settings
-
-<img src="images/filter-add-anna.png" width="20%"/>
-<img src="images/link-branch1-anna-hidecontrolpanel.png" width="20%"/>
-<img src="images/proved-setting-hidecontrolpanel.png" width="20%"/>
+<img src="images/add-users-created-hidecontrolpanel.png" width="40%"/>
+Created a new GPO: 'Hide Control Panel'
+<img src="images/controlpanel-prohibitaccess.png" width="40%"/>
+<img src="images/controlpanel-prohibitaccess-proved.png" width="40%"/>
+Configured: 'Users configuration > Police > Administrative Templates > Control Panel'
+→Prohibit access to Control Panel and PC settings = *Enabled*
+<img src="images/filter-add-anna.png" width="40%"/>
+<img src="images/link-branch1-anna-hidecontrolpanel.png" width="40%"/>
+Linked the GPO at the domain root (lab.local)
+SEcurity Filtering: removed 'Authenticated Users', added 'Anna (anna.Y@lab.local)' only.
+<img src="images/proved-setting-hidecontrolpanel.png" width="40%"/>
 Filtering: test Anna user-link it at domain(lab.local)-live for Anna Y.
 
-<img src="images/newRDP-login-lab-client.png" width="20%"/>
-<img src="images/lab-client-login.png" width="20%"/>
-WIN+R-mstsc-Login lab.local\anna.Y
-<img src="images/RDP-network-setting.png" width="20%"/>
-<img src="images/network-inbound-port-rules-allow-RDP.png" width="20%"/>
-<img src="images/ADUC-account-password-setting.png" width="20%"/>
-<img src="images/anna-reset-password.png" width="20%"/>
-<img src="images/Login-successes .png" width="20%"/>
+##Trouble Shooting (1): Setting password
+<img src="images/newRDP-login-lab-client.png" width="40%"/>
+<img src="images/lab-client-login.png" width="40%"/>
+<img src="images/RDP-network-setting.png" width="40%"/>
+<img src="images/network-inbound-port-rules-allow-RDP.png" width="40%"/>
+<img src="images/ADUC-account-password-setting.png" width="40%"/>
+<img src="images/anna-reset-password.png" width="40%"/>
+<img src="images/Login-tested .png" width="40%"/>
+Tested: 'WIN+R-mstsc'-Login 'ab.local\anna.Y'
 Appeared error: setting networking inbound port rules-Allow RDP
-<img src="images/local-users-and-groups.png" width="20%"/>
-lusrmgr.msc: local users and groups-Remote Desktop Users-add anna.Y(user)
+<img src="images/local-users-and-groups.png" width="40%"/>
+'lusrmgr.msc': local users and groups-Remote Desktop Users-add anna.Y(user)
 me able to log in to this VM using anna.Y domain credentials.
 
-Configured User Configuration > Policies > Administrative Templates > 
-Desktop > Desktop to push a wallpaper to client machines.
-Confirmed the wallpaper was applied on the client after login.
 
 <img src="images/Environment-spunup.png" width="20%" />
 Environment-spun up: example of practice with GPO
