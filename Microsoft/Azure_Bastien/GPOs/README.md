@@ -81,7 +81,7 @@ disabled on the target computer.
 Created a new GPO: 'Hide Control Panel'
 <img src="images/controlpanel-prohibitaccess.png" width="40%"/>
 <img src="images/controlpanel-prohibitaccess-proved.png" width="40%"/>
-Configured: 'Users configuration > Police > Administrative Templates > Control Panel'
+Configured: 'Users configuration > Policies > Administrative Templates > Control Panel'
 → Prohibit access to Control Panel and PC settings = *Enabled*
 
 <img src="images/filter-add-anna.png" width="40%"/>
@@ -90,9 +90,8 @@ Linked the GPO at the domain root (lab.local)
 Security Filtering: removed 'Authenticated Users', added 'Anna (anna.Y@lab.local)' only.
 
 <img src="images/proved-setting-hidecontrolpanel.png" width="40%"/>
-Filtering: test Anna user-link it at domain(lab.local)-live for Anna Y.
+Confirmed live for Anna Y: the restriction applies exactly as scoped.
 
-### Setting password
 
 <img src="images/newRDP-login-lab-client.png" width="30%"/>
 <img src="images/lab-client-login.png" width="30%"/>
@@ -101,7 +100,6 @@ Filtering: test Anna user-link it at domain(lab.local)-live for Anna Y.
 <img src="images/ADUC-account-password-setting.png" width="30%"/>
 <img src="images/anna-reset-password.png" width="30%"/>
 
-### Tested login
 
 <img src="images/Login-tested .png" width="30%"/>
 Tested: 'WIN+R-mstsc'-Login 'lab.local\anna.Y'
@@ -234,7 +232,7 @@ A Domain controller has no local SAM database, so 'lusrmgr.msc' is disabled on i
 
 <img src="images/Layer5-anndY-gpresult.png" width="30%" />
 
-Even after Layers 1-4 were fixed, the GPO restriction is section 6 didn't visibly apply until a full sign-out-sign-in was performed instead of reconnecting to a saved session.
+Even after Layers 1-4 were fixed, the GPO restriction in section 6 didn't visibly apply until a full sign-out-sign-in was performed instead of reconnecting to a saved session.
 
 **Verification of the full fix:**
 - Successful RDP login as 'lab\anna.Y' via a fresh "Other user" logon(not a resumed/remembered session).
