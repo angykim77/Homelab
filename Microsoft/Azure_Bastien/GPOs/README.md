@@ -42,7 +42,7 @@ Advanced setting: allow read, apply group policy for GPO. (Gatekeeper-1)
 Security Filtering (Gatekeeper-2)
 <img src="images/setting.png" width="20%" />
 
-Created a new Group Policy Object in the Group Policy Objects container.
+
 
 ### 4. Tested the GPO on the client machine
 ![Domain Credentials](images/tested-GPO.png)
