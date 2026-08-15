@@ -43,7 +43,7 @@ Remove 'authenticated users' from Security filtering so the GPO scope narrows to
 Advanced setting: allow 'read'+'apply group policy': Verified the same result appears in two place
 1) the 'Security Filtering' section on the scope tab
 2) the underlying 'Advanced Security Settings' (Delegation tab-Advanced)
-3) 
+ 
 <img src="images/setting.png" width="40%" />
 
 
@@ -116,7 +116,7 @@ Tested by RDP'ing into 'lab-vm' as 'lab\anna.Y' (Refer to section: 12-Troublesho
 Opening Control Panel ('WIN+R' → 'control') returned: "This operation has been cancelled due to
 restrictions in effect on this computer. Please contact your system administrator."
 
-## What I Learned: 'gpresult' reporting a GPO as 'Applied" only means the the policy is computed and would take effect - it doesn't mean the 'current' desktop session already reflects it. Administrative template UI restrictions are enforced by 'explorer.exe' at logon, so reconnecting to a saved/remembered RDP session can still show the old, unrestricted state. A full sign-out and fresh logon is required to see the restriction actually apply.
+**What I Learned:** 'gpresult' reporting a GPO as 'Applied" only means the the policy is computed and would take effect - it doesn't mean the 'current' desktop session already reflects it. Administrative template UI restrictions are enforced by 'explorer.exe' at logon, so reconnecting to a saved/remembered RDP session can still show the old, unrestricted state. A full sign-out and fresh logon is required to see the restriction actually apply.
 
 
 
@@ -135,7 +135,7 @@ Environment-spun up: example of practice with GPO
 
 Used 'User Configuration > Policies > Administrative Templates > Desktop > Desktop' 
 → *Desktop Wallpaper*
-to  puch a wallpaper to client machines, following the same GPO creation → security filtering →
+to  push a wallpaper to client machines, following the same GPO creation → security filtering →
 link → 'gpupdate /force' → verify pattern as section 6.
 
 
@@ -158,8 +158,6 @@ Confirmed the drive appeared in file explorer on the client after login.
 <img src="images/security-filtering-annaY.png" width="40%" />
 <img src="images/gpupdate-force.png" width="40%" />
 <img src="images/browse.png" width="40%" />
-Set the default homepage for Microsoft Edge using 'Administrative Template > Microsoft Edge'.
-Verified Edge opened to the configured homepage on the client.
 
 Microsoft's Edge policy template (.cab) download wouldn't complete, so I used an ADMX-free alternative: a GPP Registry item setting HomepageLocation and HomepageIsNewTabPage under HKCU\SOFTWARE\Policies\Microsoft\Edge. Verified via edge://policy, which showed the homepage policy as Value: [https://annaY.com], Status: OK.
 
@@ -179,7 +177,7 @@ Rather than requiring a second test account, this demonstrates the filtering mec
 3. Run 'gpresult /r' again → GPO now appears under *Denied (security filtering)*
 
 This before/after pair is the clearest possible proof that Security Filtering - not just 
-the OU link - controls whoa GPO actually applies to.
+the OU link - controls who a GPO actually applies to.
    
 
 ### 11. Configured Delegation
@@ -206,8 +204,6 @@ While testing the 'Hide Control Panel' GPO in section 6, RDP login as 'anna.Y' f
 **Fix:** added an inbound security rule - 'Allow-RDP', TCP, port 3389, source restricted to a specific IP, action Allow.
 
 **Layer 2 - Windows Defender Firewall (OS-level reachability).**
-
-<img src="images/.png" width="30%" />
 
 <img src="images/Login-tested.png" width="30%" />
 
