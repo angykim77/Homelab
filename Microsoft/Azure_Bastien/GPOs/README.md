@@ -118,19 +118,28 @@ Tested by RDP'ing into 'lab-vm' as 'lab\anna.Y' (Refer to section: 12-Trouble sh
 Opening Control Panel ('WIN+R' → 'control') returned: "This operation has been cancelled due to
 restrictions in effect on this computer. Please contact your system administrator."
 
-
+## What I Learned: 'gpresult' reporting a GPO as 'Applied" only means the the policy is computed and would take effect - it doesn't mean the 'current' desktop session already reflects it. Administrative template UI restrictions are enforced by 'explorer.exe' at logon, so reconnecting to a saved/remembered RDP session can still show the old, unrestricted state. A full sign-out and fresh logon is required to see the restriction actually apply.
 
 
 
 <img src="images/Environment-spunup.png" width="20%" />
 Environment-spun up: example of practice with GPO
 
-### 7. Mapped a network drive via GPO
-![Domain Credentials](images/.png)
-<img src="images/.png" width="20%" />
-Used Group Policy Preferences (Drive Maps) to configure an automatic 
-network drive mapping.
-Confirmed the drive appeared in File Explorer on the client after login.
+### 7. Set a Custom Desktop Wallpaper Via GPO
+<img src="images/GPO-set-wallpaper.png" width="40%" />
+<img src="images/GPO-set-wallpaper-2.png" width="40%" />
+<img src="images/GPO-set-wallpaper-3.png" width="40%" />
+<img src="images/gpupdate.force.png" width="40%" />
+<img src="images/Linked-lab.local-setwallpaper.png" width="40%" />
+<img src="images/security.filtering-annaY.png" width="40%" />
+<img src="images/wallpaper-whale.png" width="40%" />
+<img src="images/wallpaper-whale-2.png" width="40%" />
+
+Used 'User Configuration > Policies > Administrative Templates > Desktop > Desktop' 
+→ *Desktop Wallpaper*
+to  puch a wallpaper to client machines, following the same GPO creation → security filtering →
+link → 'gpupdate /force' → verify pattern as section 6.
+
 
 ### 8. Configured Microsoft Edge homepage via GPO
 ![Domain Credentials](images/.png)
