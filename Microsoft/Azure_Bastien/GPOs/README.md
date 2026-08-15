@@ -141,9 +141,14 @@ to  puch a wallpaper to client machines, following the same GPO creation → sec
 link → 'gpupdate /force' → verify pattern as section 6.
 
 
-### 8. Configured Microsoft Edge homepage via GPO
-![Domain Credentials](images/.png)
-<img src="images/.png" width="20%" />
+### 8. Mapped a Network Drive via GPO
+<img src="images/Map-NetworkDrive-1.png" width="20%" />
+<img src="images/Map-NetworkDrive-2.png" width="20%" />
+<img src="images/Linked-lab.local.png" width="20%" />
+<img src="images/security-filtering-anna.png" width="20%" />
+<img src="images/gpupdate.force.png" width="20%" />
+<img src="images/thisPC-A.png" width="20%" />
+
 Set the default homepage for Microsoft Edge using Administrative 
 Templates > Microsoft Edge.
 Verified Edge opened to the configured homepage on the client.
