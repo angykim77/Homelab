@@ -13,7 +13,7 @@ and troubleshooting.
 - Active Directory Domain Services (AD DS)
 - Group Policy Management Console (GPMC)
 - Active Directory Users and Computers (ADUC)
-- 
+
 ## Build Process
 
 ### 1. What Is Group Policy?
