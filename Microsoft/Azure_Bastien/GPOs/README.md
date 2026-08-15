@@ -33,6 +33,7 @@ Group Policy Objects container.
 <img src="images/created-GPO.png" width="40%" />
 <img src="images/created-GPO-TESTGPO.png" width="40%" />
 Created new GPO(TESTGPO) in Group Policy Objects This GPO has no actual settings defined - it exists purely to practice the permission mechanics below, not to test an applied setting.
+
 <img src="images/add-Anna-oneuser.png" width="40%" />
 Added one user to Security Filtering: 'Anna Y'
 <img src="images/remove-authenticatedusers.png" width="40%" />
@@ -42,6 +43,7 @@ Remove 'authenticated users' from Security filtering so the GPO scope narrows to
 Advanced setting: allow 'read'+'apply group policy': Verified the same result appears in two place
 1) the 'Security Filtering' section on the scope tab
 2) the underlying 'Advanced Security Settings' (Delegation tab-Advanced)
+3) 
 <img src="images/setting.png" width="40%" />
 
 
@@ -83,30 +85,34 @@ Created a new GPO: 'Hide Control Panel'
 <img src="images/controlpanel-prohibitaccess-proved.png" width="40%"/>
 Configured: 'Users configuration > Police > Administrative Templates > Control Panel'
 →Prohibit access to Control Panel and PC settings = *Enabled*
+
 <img src="images/filter-add-anna.png" width="40%"/>
 <img src="images/link-branch1-anna-hidecontrolpanel.png" width="40%"/>
 Linked the GPO at the domain root (lab.local)
 Security Filtering: removed 'Authenticated Users', added 'Anna (anna.Y@lab.local)' only.
+
 <img src="images/proved-setting-hidecontrolpanel.png" width="40%"/>
 Filtering: test Anna user-link it at domain(lab.local)-live for Anna Y.
 
 #Setting password
-<img src="images/newRDP-login-lab-client.png" width="40%"/>
-<img src="images/lab-client-login.png" width="40%"/>
-<img src="images/RDP-network-setting.png" width="40%"/>
-<img src="images/network-inbound-port-rules-allow-RDP.png" width="40%"/>
-<img src="images/ADUC-account-password-setting.png" width="40%"/>
-<img src="images/anna-reset-password.png" width="40%"/>
+<img src="images/newRDP-login-lab-client.png" width="30%"/>
+<img src="images/lab-client-login.png" width="30%"/>
+<img src="images/RDP-network-setting.png" width="30%"/>
+<img src="images/network-inbound-port-rules-allow-RDP.png" width="30%"/>
+<img src="images/ADUC-account-password-setting.png" width="30%"/>
+<img src="images/anna-reset-password.png" width="30%"/>
 
 #Tested login
-<img src="images/Login-tested .png" width="40%"/>
+<img src="images/Login-tested .png" width="30%"/>
 Tested: 'WIN+R-mstsc'-Login 'ab.local\anna.Y'
-<img src="images/new-connect-login.png" width="40%"/>
+<img src="images/new-connect-login.png" width="30%"/>
 Tested by RDP'ing into 'lab-vm' as 'lab\anna.Y' (Refer to section: 12-Trouble shooing)
-<img src="images/check-applied-GPO.png" width="40%"/>
+
+<img src="images/check-applied-GPO.png" width="30%"/>
 'gpresult /r /scope:user' inside the Anna Y session showed 'Hide Control Panel' under 
 *Applied Group Policy Objects*.
-<img src="images/control-panel-restricted.png" width="40%"/>
+
+<img src="images/control-panel-restricted.png" width="30%"/>
 Opening Control Panel ('WIN+R' → 'control') returned: "This operation has been cancelled due to
 restrictions in effect on this computer. Please contact your system administrator."
 
