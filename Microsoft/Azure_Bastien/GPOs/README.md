@@ -188,7 +188,7 @@ Granted a specific user/group permission to manage a GPO without giving full Dom
 delete, modify security').
 <img src="images/TESTGPO-annaY-edit-setting.png" width="40%" />
 <img src="images/TESTGPO-annaY-edit-setting-2.png" width="40%" />
-<img src="images/.png" width="40%" />
+
 
 In a real environment this would typically go to an IT/helpdesk group rather than an end user - Anna Y is a member of an 'IT workers' group discovered during this lab, which would be a more realistic delegation target than delegation to a restricted end-user account.
 
