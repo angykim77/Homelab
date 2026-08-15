@@ -186,10 +186,9 @@ the OU link - controls whoa GPO actually applies to.
 ### 11. Configured Delegation
 Granted a specific user/group permission to manage a GPO without giving full Domain Admin rights, using the *Delegation* tab on the GPO (permission level: 'Edit settings', not 'Edit settings, 
 delete, modify security').
+
 <img src="images/TESTGPO-annaY-edit-setting.png" width="40%" />
 <img src="images/TESTGPO-annaY-edit-setting-2.png" width="40%" />
-
-
 In a real environment this would typically go to an IT/helpdesk group rather than an end user - Anna Y is a member of an 'IT workers' group discovered during this lab, which would be a more realistic delegation target than delegation to a restricted end-user account.
 
 *Still to capture: the delegation tab showing the granted permissin, and a login as the delegated account showing it can edit only that GPO.
