@@ -84,7 +84,7 @@ Created a new GPO: 'Hide Control Panel'
 <img src="images/controlpanel-prohibitaccess.png" width="40%"/>
 <img src="images/controlpanel-prohibitaccess-proved.png" width="40%"/>
 Configured: 'Users configuration > Police > Administrative Templates > Control Panel'
-→Prohibit access to Control Panel and PC settings = *Enabled*
+→ Prohibit access to Control Panel and PC settings = *Enabled*
 
 <img src="images/filter-add-anna.png" width="40%"/>
 <img src="images/link-branch1-anna-hidecontrolpanel.png" width="40%"/>
@@ -106,9 +106,9 @@ Filtering: test Anna user-link it at domain(lab.local)-live for Anna Y.
 ### Tested login
 
 <img src="images/Login-tested .png" width="30%"/>
-Tested: 'WIN+R-mstsc'-Login 'ab.local\anna.Y'
+Tested: 'WIN+R-mstsc'-Login 'lab.local\anna.Y'
 <img src="images/new-connect-login.png" width="30%"/>
-Tested by RDP'ing into 'lab-vm' as 'lab\anna.Y' (Refer to section: 12-Trouble shooing)
+Tested by RDP'ing into 'lab-vm' as 'lab\anna.Y' (Refer to section: 12-Troubleshooting)
 
 <img src="images/check-applied-GPO.png" width="30%"/>
 'gpresult /r /scope:user' inside the Anna Y session showed 'Hide Control Panel' under 
@@ -184,8 +184,8 @@ the OU link - controls whoa GPO actually applies to.
    
 
 ### 11. Configured Delegation
-Granted a specific user/group permission to manage a GPO without giving full Domain Admin rights, using the *Delegation* tab on the GPO (permission level: 'Edit settings', not 'Edit settings, 
-delete, modify security').
+Granted a specific user/group permission to manage a GPO without giving full Domain Admin rights, using the *Delegation* tab on the GPO permission level: 'Edit settings', not 'Edit settings, 
+delete, modify security'.
 
 <img src="images/TESTGPO-annaY-edit-setting.png" width="40%" />
 <img src="images/TESTGPO-annaY-edit-setting-2.png" width="40%" />
@@ -238,7 +238,7 @@ does not grant this right to the 'Remote Desktop Users' group by default - only 
 <img src="images/Layer4-Builtin-add-annaY.png" width="30%" />
 
 Tried adding 'anna.Y' to the local 'Remote Desktop Users' group via 'lusrmgr.msc', which failed with: *"the computer lab-vm is a domain controller. This  snap-in cannot be used on a domain controller. domain accounts are managed with the Active Directory Users and Computers snap-in.* 
-A Domain controller has no local SAM database, so 'lusrmgr.nsc' is disabled on it.
+A Domain controller has no local SAM database, so 'lusrmgr.msc' is disabled on it.
 **Fix:** Active Directory Users and Computers → 'lab.local' → **Builtin** container → **Remote Desktop Users** → Members → Add → 'Anna Y'
 
 **Layer 5 - Session state.**
@@ -270,6 +270,6 @@ Even after Layers 1-4 were fixed, the GPO restriction is section 6 didn't visibl
 - Practiced troubleshooting GPO application issues using 'gpupdate' and 
   'gpresult', including the difference between a policy being "Applied" per 'gpresult' and actually being reflected in a live desktop session.
 - Learned that Domain Controllers handle Remote Desktop access differently from member servers: 'lusrmgr.msc'is disabled on a DC, local group management goes through ADUC's Builtin container instead, and the "Allow log on through Remote Desktop Services" right isn't granted to 'Remote Desktop Users' by default the way it is on a member server.
-- Learned to separate network-layer troubleshooting *Azure NSG) from OS-layer troubleshooting (Windows Firewall) from AD-layer troubleshooting (User Rights Assignment, group membership) -
+- Learned to separate network-layer troubleshooting (Azure NSG) from OS-layer troubleshooting (Windows Firewall) from AD-layer troubleshooting (User Rights Assignment, group membership) -
 a single "can't connect symptom can have causes at any of these layers.
 
