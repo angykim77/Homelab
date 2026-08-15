@@ -183,12 +183,16 @@ the OU link - controls whoa GPO actually applies to.
 *Sill to capture: the two gpresult outputs side by side.*
    
 
-### 11. Troubleshot GPO application
-![Domain Credentials](images/.png)
+### 11. Configured Delegation
+Granted a specific user/group permission to manage a GPO without giving full Domain Admin rights, using the *Delegation* tab on the GPO (permission level: 'Edit settings', not 'Edit settings, 
+delete, modify security').
+<img src="images/TESTGPO-annaY-edit-setting.png" width="40%" />
+<img src="images/TESTGPO-annaY-edit-setting-2.png" width="40%" />
 <img src="images/.png" width="40%" />
-Used gpupdate /force, gpresult /r, and gpresult /h to verify which 
-policies applied and diagnose why a policy wasn't taking effect.
 
+In a real environment this would typically go to an IT/helpdesk group rather than an end user - Anna Y is a member of an 'IT workers' group discovered during this lab, which would be a more realistic delegation target than delegation to a restricted end-user account.
+
+*Still to capture: the delegation tab showing the granted permissin, and a login as the delegated account showing it can edit only that GPO.
 
 ## What I Learned
 - Learned how Group Policy flows through the AD hierarchy and how 
